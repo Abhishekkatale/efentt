@@ -13,17 +13,25 @@ const inquirySchema = new mongoose.Schema({
     required: [true, 'Contact Number is required'],
     trim: true,
   },
-  category: {
-    type: String,
-    required: [true, 'Search term is required'],
+  categories: {
+    type: [String],
+    required: [true, 'At least one category is required'],
+    validate: {
+      validator: function(v) {
+        return v.length > 0;
+      },
+      message: props => 'At least one category must be selected'
+    }
   },
   location: {
     type: String,
     required: [true, 'Location is required'],
+    trim: true,
   },
   requirement: {
     type: String,
     required: [true, 'Requirement is required'],
+    trim: true,
   },
   createdAt: {
     type: Date,

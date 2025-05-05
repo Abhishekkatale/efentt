@@ -10,10 +10,10 @@ const router = express.Router();
 // @access  Public
 router.post('/', async (req, res) => {
   try {
-    const { name, contactNumber, category, location, requirement } = req.body;
+    const { name, contactNumber, categories, location, requirement } = req.body;
 
     // Validate required fields
-    if (!name || !contactNumber || !category || !location || !requirement) {
+    if (!name || !contactNumber || !categories || !location || !requirement) {
       return res.status(400).json({ error: 'All fields are required' });
     }
 
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
     const newInquiry = new Inquiry({
       name,
       contactNumber,
-      category,
+      categories,
       location,
       requirement
     });
