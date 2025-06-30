@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 
 const categories = [
+  "Wedding Party",
+"Corporate Event",
+"Birthday Party",
+"Social Event",
+"Public Event",
+"Sports Event",
+"Religious Event",
+"Entertainment Event",
+"Baby Shower / Naming Ceremony",
+"Haldi / Mehndi / Sangeet / Reception",
   "Wedding Venues", "Caterers", "Wedding Invitations", "Wedding Gifts",
   "Wedding Photographers", "Wedding Music", "Wedding Transportation", "Tent House",
   "Wedding Entertainment", "Florists", "Wedding Planners", "Wedding Videography",

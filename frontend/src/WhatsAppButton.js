@@ -49,7 +49,7 @@ const FloatingActionButton = () => {
       {/* Main Button */}
       <motion.div
   onClick={toggleOptions}
-  className="bg-[#f50057] text-white p-4 rounded-full shadow-lg cursor-pointer"
+  className="bg-green-500 text-white p-4 rounded-full shadow-lg cursor-pointer"
   initial={{ scale: 1 }}
   animate={{
     scale: [1, 1.2, 1],
@@ -62,8 +62,9 @@ const FloatingActionButton = () => {
   }}
   whileHover={{ scale: 1.1 }}
 >
-  {isOpen ? <FaTimes size={30} /> : <FaCommentDots size={24} />}
+  {isOpen ? <FaEnvelope size={25} /> : <FaWhatsapp size={25} />}
 </motion.div>
+
 
 
       {/* Options */}

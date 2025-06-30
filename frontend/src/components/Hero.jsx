@@ -84,10 +84,12 @@ class Hero extends Component {
     <option value="" disabled>
       Select Location
     </option>
-    <option value="mumbai">Mumbai</option>
     <option value="pune">Pune</option>
-    <option value="bangalore">Bangalore</option>
-    <option value="delhi">Delhi</option>
+<option value="lonavala">Lonavala</option>
+<option value="khandala">Khandala</option>
+<option value="mahabaleshwar">Mahabaleshwar</option>
+<option value="goa">Goa</option>
+
   </select>
 
   {/* Search Input */}
