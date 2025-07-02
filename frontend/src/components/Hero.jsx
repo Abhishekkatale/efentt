@@ -146,7 +146,7 @@ class Hero extends Component {
           {/* Get Started Button (Desktop) */}
           <button
             onClick={this.toggleInquiryForm}
-            className="px-6 py-2 bg-pink-500 text-white font-medium rounded-lg shadow hover:bg-pink-600 transition-all duration-300"
+            className=" px-6 py-2 bg-pink-500 text-white font-medium rounded-lg shadow hover:bg-pink-600 transition-all duration-300"
           >
             Get Started
           </button>

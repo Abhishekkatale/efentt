@@ -10,7 +10,7 @@ import AboutUs from './pages/AboutUs.jsx'
 import Portfolios from './pages/Portfolios.jsx'
 import WhatsAppButton from './WhatsAppButton.js';
 import Planners from './pages/planners.jsx'
-import Decorators from './pages/planners.jsx'
+import Decorators from './pages/decorators.jsx'
 import Caterers from './pages/caterers.jsx'
 import Photographers from './pages/photographers.jsx'
 import Venues from './pages/venues.jsx'

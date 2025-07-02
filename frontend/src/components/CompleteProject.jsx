@@ -1,20 +1,41 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from 'framer-motion';
 
 const stats = [
-  { value: 20, label: "Corporate Clients" },
-  { value: 30, label: "Events" },
-  { value: 40, label: "Exhibitions" },
-  { value: 25, label: "Activations" },
+  { value: 150, label: "Happy Clients", icon: "👥" },
+  { value: 250, label: "Projects Done", icon: "🚀" },
+  { value: 180, label: "Events Hosted", icon: "🎉" },
+  { value: 95, label: "Success Rate", icon: "⭐", suffix: "%" },
 ];
 
-const Counter = ({ endValue }) => {
+const Counter = ({ endValue, suffix = "+" }) => {
   const [count, setCount] = React.useState(0);
+  const [isVisible, setIsVisible] = React.useState(false);
+  const counterRef = React.useRef(null);
 
   React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (counterRef.current) {
+      observer.observe(counterRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  React.useEffect(() => {
+    if (!isVisible) return;
+
     let start = 0;
-    const duration = 2000; // 2 seconds
-    const increment = Math.ceil(endValue / (duration / 10));
+    const duration = 2000;
+    const increment = endValue / (duration / 16);
 
     const counter = setInterval(() => {
       start += increment;
@@ -22,64 +43,114 @@ const Counter = ({ endValue }) => {
         setCount(endValue);
         clearInterval(counter);
       } else {
-        setCount(start);
+        setCount(Math.floor(start));
       }
-    }, 10);
+    }, 16);
 
     return () => clearInterval(counter);
-  }, [endValue]);
+  }, [endValue, isVisible]);
 
   return (
-    <motion.span
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      {count}+
-    </motion.span>
+    <span ref={counterRef} className="font-bold text-4xl md:text-5xl text-white">
+      {count}{suffix}
+    </span>
   );
 };
 
+
 const App = () => {
   return (
-    <motion.div
-      className="bg-black text-center py-16"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-    >
-      <h1 className="text-2xl md:text-4xl text-orange-400 font-bold mb-8">
-        SUCCESSFULLY COMPLETED 100+ PROJECTS
-      </h1>
-      <motion.div
-        className="grid grid-cols-2 md:grid-cols-4 gap-8 text-white"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.2 },
-          },
-        }}
-      >
-        {stats.map((stat, index) => (
-          <motion.div
-            key={index}
-            className="flex flex-col items-center p-4 bg-black rounded-lg shadow-lg hover:scale-105 transition-transform"
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: { opacity: 1, y: 0 },
-            }}
+    <div className="min-h-screen bg-white py-16 px-4">
+      <div className="max-w-6xl mx-auto">
+        {/* Header Section */}
+        <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
           >
-            <p className="text-3xl md:text-5xl font-bold text-orange-400">
-              <Counter endValue={stat.value} />
+      
+            
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+              Our
+              <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 bg-clip-text text-transparent"> Amazing Journay</span>
+            </h2>
+            
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Transforming ideas into realtity with passion, creativity, and excellence.
             </p>
-            <p className="text-sm md:text-lg uppercase mt-2">{stat.label}</p>
           </motion.div>
-        ))}
-      </motion.div>
-    </motion.div>
+
+       {/* Stats Grid */}
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+  {stats.map((stat, index) => (
+    <div
+      key={index}
+      className="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#1E1B2E] to-[#0F0C1A] transition-all duration-500 hover:scale-[1.03] shadow-lg hover:shadow-2xl hover:shadow-pink-500/30"
+    >
+      {/* Content */}
+      <div className="relative p-8 text-center z-10">
+        {/* Icon */}
+        <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300 text-white">
+          {stat.icon}
+        </div>
+
+        {/* Counter */}
+        <div className="mb-2 text-white">
+          <Counter endValue={stat.value} suffix={stat.suffix || "+"} />
+        </div>
+
+        {/* Label */}
+        <p className="text-slate-300 text-lg font-medium group-hover:text-white transition-colors duration-300">
+          {stat.label}
+        </p>
+
+        {/* Decorative Gradient Dots */}
+        <div className="absolute top-4 right-4 w-2 h-2 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </div>
+
+      {/* Hover Glow Effect */}
+      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-2xl"></div>
+    </div>
+  ))}
+</div>
+
+
+
+
+<div className="flex justify-center items-center mt-16">
+  <motion.button
+    className="relative bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 text-white px-10 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+  >
+    <span className="text-green-300 font-semibold text-lg relative z-10">
+      ✨ Successfully Completed 500+ Projects & Counting!
+    </span>
+    <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  </motion.button>
+</div>
+
+
+        {/* Floating Particles Effect */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${2 + Math.random() * 2}s`
+              }}
+            ></div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -23,14 +23,14 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className={`fixed w-full z-50 shadow-md transition-all ${isScrolled ? 'bg-black bg-opacity-80' : 'bg-transparent'}`}
+      className={`fixed w-full z-50 shadow-md transition-all ${isScrolled ? 'bg-white ' : 'bg-transparent text-gray-950'}`}
     >
       <nav className="flex items-center justify-between px-4 py-6 md:px-16 md:py-6">
         {/* Left Navigation (Mobile Hidden) */}
         <div className="hidden md:flex items-center space-x-24 text-xl text-gray-200">
-          <Link to="/" className="hover:text-orange-500 transition text-orange-200">Home</Link>
-          <Link to="/about-us" className="hover:text-orange-500 transition text-orange-200">About Us</Link>
-          <Link to="/services" className="hover:text-orange-500 transition text-orange-200">Services</Link>
+          <Link to="/"   className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 hover:from-orange-500 hover:via-pink-500 hover:to-purple-600 transition-all duration-300">Home</Link>
+          <Link to="/about-us"   className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 hover:from-orange-500 hover:via-pink-500 hover:to-purple-600 transition-all duration-300">About Us</Link>
+          <Link to="/services"   className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 hover:from-orange-500 hover:via-pink-500 hover:to-purple-600 transition-all duration-300">Services</Link>
         </div>
 
         {/* Center Logo */}
@@ -48,12 +48,12 @@ const Header = () => {
 
         {/* Right Navigation (Mobile Hidden) */}
         <div className="hidden md:flex items-center space-x-24 text-xl text-gray-200">
-        <Link to="/portfolios" className="hover:text-orange-500 transition text-orange-200">Portfolio</Link>
+        <Link to="/portfolios"   className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 hover:from-orange-500 hover:via-pink-500 hover:to-purple-600 transition-all duration-300">Portfolio</Link>
 
           <div className="relative">
-            <button onClick={() => setIsVendorOpen(!isVendorOpen)} className="hover:text-orange-500 transition text-orange-200">Vendor</button>
+            <button onClick={() => setIsVendorOpen(!isVendorOpen)}   className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 hover:from-orange-500 hover:via-pink-500 hover:to-purple-600 transition-all duration-300">Vendor</button>
             {isVendorOpen && (
-              <div className="absolute left-0 mt-2 w-48 bg-black bg-opacity-90 text-white rounded-lg shadow-lg py-2">
+              <div className="absolute left-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg py-2">
                 <Link to="/planners" className="block px-4 py-2 hover:bg-orange-500">Planner</Link>
                 <Link to="/decorators" className="block px-4 py-2 hover:bg-orange-500">Decorators</Link>
                 <Link to="/caterers" className="block px-4 py-2 hover:bg-orange-500">Caterers</Link>
@@ -64,7 +64,7 @@ const Header = () => {
               </div>
             )}
           </div>
-          <Link to="/contact-us" className="hover:text-orange-500 transition text-orange-200">Contact Us</Link>
+          <Link to="/contact-us"   className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 hover:from-orange-500 hover:via-pink-500 hover:to-purple-600 transition-all duration-300">Contact Us</Link>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -77,7 +77,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="bg-black bg-opacity-90 text-gray-200 absolute top-16 left-0 w-full py-4 z-40">
+        <div className="bg-white text-gray-700 absolute top-16 left-0 w-full py-4 z-40">
           <ul className="flex flex-col items-center space-y-4">
             <li><Link to="/" className="hover:text-orange-500 transition">Home</Link></li>
             <li><Link to="/about-us" className="hover:text-orange-500 transition">About Us</Link></li>
