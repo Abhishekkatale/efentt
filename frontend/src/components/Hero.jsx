@@ -4,30 +4,14 @@ import InquiryForm from "./InquiryForm";
 import vid from "../assets/vid.webm";
 
 const options = [
-  "Wedding Party",
   "Corporate Event",
   "Birthday Party",
   "Social Event",
-  "Public Event",
   "Sports Event",
   "Religious Event",
   "Entertainment Event",
   "Baby Shower / Naming Ceremony",
   "Haldi / Mehndi / Sangeet / Reception",
-  "Wedding Venues",
-  "Caterers",
-  "Wedding Invitations",
-  "Wedding Gifts",
-  "Wedding Photographers",
-  "Wedding Music",
-  "Wedding Transportation",
-  "Tent House",
-  "Wedding Entertainment",
-  "Florists",
-  "Wedding Planners",
-  "Wedding Videography",
-  "Honeymoon",
-  "Wedding Decorators",
 ];
 
 // SearchBar component (if needed separately)
