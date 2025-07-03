@@ -151,7 +151,7 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <motion.div
-          className="flex flex-col lg:flex-row justify-between items-center gap-4 text-sm text-gray-600"
+          className="flex flex-col lg:flex-row justify-between items-center gap-4 text-sm text-gray-900"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
