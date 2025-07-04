@@ -4,6 +4,7 @@ import InquiryForm from "./InquiryForm";
 import vid from "../assets/vid.webm";
 
 const options = [
+  "Weding",
   "Corporate Event",
   "Birthday Party",
   "Social Event",
